@@ -1,0 +1,44 @@
+{
+	"api_key": "5347145697:AAFXL3luRZ1jcALg0_ysgAMxqKvrfQE52cA",
+	"commands": {
+		"/order": {
+			"handler": "new_order",
+			"description": "Команда для оформления заказа."
+		},
+		"/status": {
+			"handler": "order_status",
+			"description": "Получение информации по заказу."
+		},
+		"/start": {
+			"handler": "bot_start",
+			"description": "Получение справки по командам."
+		}
+	},
+	"forms": [
+		{
+			"name": "new_order_form",
+			"first_field": "new_order_name",
+			"end_handler": "new_order_complete",
+			"fields": {
+				"new_order_name" : {
+					"message": "Пожалуйста, введите ссылку на товар.",
+					"validation_error": "Ссылка должна быть формата <https://www.testsite.com/item_number=Vb-lv-YjnfI>. Перепроверьте и попробуйте ещё раз.",
+					"next_field":"new_order_phone",
+					"field_data": {
+						"type":"string",
+						"validation":"(https:\/\/)?www\\.[a-z._]{3,256}\\.com\/[a-z?=\\-A-Z]{0,256}"
+					}
+				},
+				"new_order_phone": {
+					"message": "Пожалуйста, введите номер телефона.",
+					"validation_error": "Номер телефона должен быть в формате 89105108779. Перепроверьте и попробуйте ещё раз.",
+					"next_field":"",
+					"field_data": {
+						"type":"string",
+						"validation":"8[0-9]{10}"
+					}
+				}
+			}
+		}
+	]
+}
